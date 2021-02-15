@@ -14,10 +14,9 @@ function ToggleShowSection(props){
         funcion = props.showHomeSection
     }
         return(
-         
-            <>
-                <ButtonToggle color="link" outline className="btn-sm my-4" style={{boxShadow:'2px 2px 5px', display:'inline'}} onClick= {funcion}> <Icon  style={{fontSize:'40'}} icon={props.icon} /> </ButtonToggle>{' '}
-            </>
+   
+            <ButtonToggle color="link" outline className="btn-sm my-4 mx-2" style={{boxShadow:'2px 2px 5px', display:'inline-block'}} onClick= {funcion}> <Icon  style={{fontSize:'35'}} icon={props.icon} /> </ButtonToggle>
+           
         )
     }
 

@@ -32,22 +32,22 @@ class CreateProduct extends Component{
         return(
             <div className="row d-flex justify-content-around flex-column align-items-center">
 
-        <Form className="border p-2 rounded" style={{marginTop:'12em', textAlign: 'left', borderColor: 'success'}}>
+        <Form className="border p-2 rounded" style={{marginTop:'150px', textAlign: 'left', borderColor: 'success'}}>
             <h1>Crea un nuevo producto</h1>
             <FormGroup>
-                <Label for="exampleEmail">Name: </Label>
+                <Label for="exampleEmail">Nombre: </Label>
                 <Input type="text" name="name" id="exampleEmail" placeholder="Ingresa nombre del corte"  onChange= {this.onChangeHandler}/>
             </FormGroup>
             <FormGroup>
-                <Label for="examplePassword">Image: </Label>
-                <Input type="text" name="image" id="examplePassword" placeholder="https://imageslink/200/200"  onChange= {this.onChangeHandler}/>
+                <Label for="examplePassword">Imagen: </Label>
+                <Input type="text" name="image" id="examplePassword" placeholder="https://ejemplo_url_de_la_imagen"  onChange= {this.onChangeHandler}/>
             </FormGroup>
             <FormGroup>
                 <Label for="examplePassword">Precio: </Label>
                 <Input type="text" name="price" id="examplePassword" placeholder="$0.00"  onChange= {this.onChangeHandler}/>
             </FormGroup>
             <FormGroup>
-                <Label for="exampleSelect">Category</Label>
+                <Label for="exampleSelect">Categoría: </Label>
                 <Input type="select" name="category" id="exampleSelect" onChange= {this.onChangeHandler}>
                 <option></option>
                 <option>Cerdo</option>

@@ -15,6 +15,7 @@ import Shopping from './Components/Shopping/index';
 import { Icon, InlineIcon } from '@iconify/react';
 import homeIcon from '@iconify-icons/flat-color-icons/home';
 import logo from './images/logo.jpg'
+import RangePrices from './Components/Range/index'
 
 class App extends Component{
   constructor(){
@@ -166,35 +167,43 @@ class App extends Component{
 
       <>
         
-        <header className="header d-flex justify-content-around container-fluid  rounded shadow" style={{position:'fixed', zIndex:'1', backgroundColor:'#EFEFEF'}}>
-          <img style={{width:'60px'}} src={logo}/>
-          <Filtro
-              productList = {this.state.productList}
-          />
+        <div className="d-flex justify-content-between align-items-center container-fluid  rounded shadow" style={{position:'fixed', zIndex:'1', backgroundColor:'#EFEFEF'}}>
+          
+          <nav className="d-flex flex-row align-items-center justify-content-between container-fluid">
+              {/* <div className="col-1"><img style={{width:'60px', margin:'5px'}} src={logo}/></div> */}
+              <div className="d-flex flex-column align-items-center justify-content-between">
+                <Filtro
+                    productList = {this.state.productList}
+                />
+      
+              </div>
+              <div className="ml-4">
+                <ToggleShowSection
+                      showCartSection = {this.toggleCartSectionHandler}
+                      icon = {shoppingCart} 
+                  />
 
-          <ToggleShowSection
-              showCartSection = {this.toggleCartSectionHandler}
-              icon = {shoppingCart} 
-          />
+                  <ToggleShowSection
+                      showNewProductSection = {this.toogleProductSection}
+                      icon = {meatOnBone}
+                  />
 
-          <ToggleShowSection
-              showNewProductSection = {this.toogleProductSection}
-              icon = {meatOnBone}
-          />
-
-          <ToggleShowSection
-              showHomeSection = {this.toogleHomeSection}
-              icon = {homeIcon} 
-          />
-        
-        </header>
-        
+                  <ToggleShowSection
+                      showHomeSection = {this.toogleHomeSection}
+                      icon = {homeIcon} 
+                  />
+              </div>
+          </nav>
+        </div>
+        {/* <div className="container">
+          <RangePrices/>
+          </div> */}
         <div className="App container d-flex flex-column justify-content-center" style={{zIndex:'-3'}}>
           
           { this.state.homeSection ?
-            <div style={{marginTop:'250px'}}>
+            <div style={{marginTop:'150px'}}>
               {this.state.savedProd ? <Alert color="primary"> El producto se añadió al carrito</Alert>: null}
-              <h1 className="" style={{textAlign:'center'}}>¿QUIÉRES LA MÁS SABROSOTA?</h1>
+              <h1 className="" style={{textAlign:'center'}}>¿QUIÉRES LA MÁS SABROSA?</h1>
               <h5 className="" style={{textAlign:'center', color:'GrayText'}}>Nosotros te la ofrecemos</h5>
               <div className="App d-flex row my-4 justify-content-around " >
                 

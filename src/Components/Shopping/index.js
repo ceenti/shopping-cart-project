@@ -8,7 +8,7 @@ import { Icon, InlineIcon } from '@iconify/react';
 import shoppingCart from '@iconify-icons/noto-v1/shopping-cart';
 import homeIcon from '@iconify-icons/flat-color-icons/home';
 import fullTrash from '@iconify-icons/flat-color-icons/full-trash';
-import RemoveCartProduct from './../RemoveCartProduct/index'
+import RangePrices from './../Range/index'
 
 class Shopping extends Component{
     constructor(props){
@@ -69,6 +69,7 @@ class Shopping extends Component{
 
     render(){
         return(
+            <>
             <div className="Shopping" style={{marginTop:'6em'}}>
                 {this.state.alert ? <Alert color="warning"> Se removió el producto del carrito</Alert> : null }
                 {this.state.deletedAlert ? <Alert color="primary"> El carrito está vacío, puedes añadir más ;)</Alert> : null}
@@ -118,6 +119,7 @@ class Shopping extends Component{
                     </Table>
                 </div>
             </div>
+          </>  
         )
     }
 }

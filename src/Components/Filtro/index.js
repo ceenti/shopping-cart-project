@@ -3,6 +3,8 @@ import React, {Component} from 'react'
 import {
     Button, Form, FormGroup, Label, Input, FormText, Col
    } from 'reactstrap';
+import { Range } from 'react-range';
+import RangePrices from "../Range";
 
 
 class Filtro extends Component{
@@ -12,8 +14,12 @@ class Filtro extends Component{
             filteredList : [],
             filterByCategory: false,
             filterByPrice: false,
+            minorPrice:0,
+            mayorPrice:0
 
         }
+        this.onClickTypeOfFilter = this.onClickTypeOfFilter.bind(this)
+        this.onChangeHandlerSelection = this.onChangeHandlerSelection.bind(this)
     }
 
     onChangeHandlerSelection(event){
@@ -27,6 +33,17 @@ class Filtro extends Component{
     onClickTypeOfFilter(event){
         let typeOfFilter = event.target.name
         let options = []
+        if(typeOfFilter === "category"){
+            options = ["pollo","cerdo","res"]
+        }
+        if(typeOfFilter === "price"){
+            let pricesArray = this.props.productList.map( product => product['price']).sort((a,b) => a - b)
+            let minorPrice = pricesArray[0]
+            let mayorPrice = pricesArray[pricesArray.lenght-1]
+            this.setState({minorPrice : minorPrice})
+            this.setState({mayorPrice : mayorPrice})
+        }
+        
         let optionsFiltered = this.props.productList.filter( product => {
             return product[typeOfFilter]          
         })
@@ -35,19 +52,25 @@ class Filtro extends Component{
     render(){
         return(
             <>
-                <FormGroup row md={6} className="my-4 d-flex col-8 justify-content-around align-items-center" >
-                    <Label style={{textAlign:''}} for="exampleSelect"><h4 color="success">Filtra por: </h4></Label>
-                    <Button outline className="btn-md mx-1 p-1"  color="primary" name="category" value="" onClick={this.onClickTypeOfFilter}>Categoría</Button>{' '}
-                    <Button outline className="btn-md" color="success" name="price" value="" onClick={this.onClickTypeOfFilter}>Precio</Button>{' '}
-                    <Col  lg={6}>
-                        <Input type="select" className="btn-lg" name="category" id="exampleSelect">
-                            <option value="">Elige tipo de filtrado</option>
+               
+                <FormGroup row className="my-4">
+                    {/* <Label style={{textAlign:'center'}} for="exampleSelect"><h4 color="success">Filtro</h4></Label> */}
+                    <Button outline className="btn-md mx-1 p-2"  color="primary" name="category" value="" onClick={this.onClickTypeOfFilter}>Categoría</Button>{' '}
+                    <Button outline className="btn-md mx-1 p-2" color="success" name="price" value="" onClick={this.onClickTypeOfFilter}>Precio</Button>{' '}
+                    <Col>
+                        <Input type="select" className="btn-md p-1" name="category" id="exampleSelect">
+                            <option value="">Filtro</option>
                             <option value="pollo">Pollo</option>
                             <option value="cerdo">Cerdo</option>
                             <option value="res">Res</option>
                         </Input>
                     </Col>
                 </FormGroup>
+                <RangePrices
+                    minorPrice = {this.state.minorPrice}
+                    mayorPrice = {this.state.mayorPrice}
+                    
+                />
             </>
         )
     }
