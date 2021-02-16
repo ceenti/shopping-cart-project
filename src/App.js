@@ -112,6 +112,7 @@ class App extends Component{
     this.addProductToCart = this.addProductToCart.bind(this)
     this.showSuccessSavedHandler = this.showSuccessSavedHandler.bind(this)
     this.currentCartList = this.currentCartList.bind(this)
+    this.currentFilteredHandler = this.currentFilteredHandler.bind(this)
   }
 
   toggleCartSectionHandler(){
@@ -161,6 +162,9 @@ class App extends Component{
   currentCartList(newListArray){
     this.setState({shoppinCartProducts: newListArray})
   }
+  currentFilteredHandler(newList){
+    this.setState({filteredProducts : newList})
+  }
 
   render(props){
     return(
@@ -171,9 +175,10 @@ class App extends Component{
           
           <nav className="d-flex flex-row align-items-center justify-content-between container-fluid">
               {/* <div className="col-1"><img style={{width:'60px', margin:'5px'}} src={logo}/></div> */}
-              <div className="d-flex flex-column align-items-center justify-content-between">
+              <div className=" ">
                 <Filtro
                     productList = {this.state.productList}
+                    newFilteredList = {this.currentFilteredHandler}
                 />
       
               </div>
