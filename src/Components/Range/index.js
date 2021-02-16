@@ -2,24 +2,22 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Range, getTrackBackground } from "react-range";
 
-// let STEP = 10;
-// let MIN = 90;
-// let MAX = 350;
-
 class RangePrices extends React.Component {
   constructor(props){
     super(props);
       this.state = {
-        maxChoice : 0,
+        currentChoice : 0,
         values: [500]
       }
   }
 
+  currentChoice(){
+    this.props.choice()
+  }
   render() {
-    let STEP = 1;
+    let STEP = 5;
     let MIN = this.props.minorPrice ? this.props.minorPrice : 0 ;
-    let MAX = this.props.mayorPrice ? this.props.mayorPrice : 100 ;
-    //this.setState({values : [this.props.productsList.length]})
+    let MAX = this.props.mayorPrice ? this.props.mayorPrice : 10 ;
    console.log(this.props.productsList.length)
     return (
       <div
@@ -36,12 +34,11 @@ class RangePrices extends React.Component {
           min={MIN}
           max={MAX}
           onChange={(values) => this.setState({ values})}
+          onFinalChange = {() => this.props.choice(this.state.values[0].toFixed(0))}
           renderTrack={({ props, children }) => (
             <div
               onMouseDown={this.props.onMouseDown}
               onTouchStart={this.props.onTouchStart}
-              onMouseDown = {this.props.choice(this.state.values[0].toFixed(1))}
-              onTouchStart = {this.props.choice(this.state.values[0].toFixed(1))}
               style={{
                 ...props.style,
                 height: "3px",
@@ -94,9 +91,10 @@ class RangePrices extends React.Component {
             </div>
           )}
         />
-        <output style={{ marginTop: "5px" }} id="output">
-          {this.state.values[0].toFixed(1)}
+        <output style={{ marginTop: "5px" }} id="output">    
+          ${this.state.values[0].toFixed(0)}
         </output>
+        
       </div>
     );
   }

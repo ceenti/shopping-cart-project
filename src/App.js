@@ -33,7 +33,7 @@ class App extends Component{
           id:'2',
           name: "Tomahawk",
           category:"res",
-          price:350,
+          price:300,
           image:"https://baconmockup.com/207/205/"
         },
         {
@@ -53,7 +53,7 @@ class App extends Component{
         {
           id:'5',
           name: "Medallón de cerdo",
-          category:"pollo",
+          category:"cerdo",
           price:180,
           image:"https://baconmockup.com/214/205/"
         },
@@ -67,12 +67,13 @@ class App extends Component{
         {
           id:'7',
           name: "Medallón de cerdo",
-          category:"pollo",
+          category:"cerdo",
           price:180,
           image:"https://baconmockup.com/214/205/"
         }
       ],
       filteredProducts: [],
+      filterActive:false,
       homeSection: true,
       newProductSection:false,
       cartSection: false,
@@ -81,7 +82,7 @@ class App extends Component{
         {
           id:'5',
           name: "Medallón de cerdo",
-          category:"pollo",
+          category:"cerdo",
           price:180,
           image:"https://baconmockup.com/214/205/"
         },
@@ -95,7 +96,7 @@ class App extends Component{
         {
           id:'7',
           name: "Medallón de cerdo",
-          category:"pollo",
+          category:"cerdo",
           price:160,
           image:"https://baconmockup.com/214/205/"
         }
@@ -163,10 +164,13 @@ class App extends Component{
     this.setState({shoppinCartProducts: newListArray})
   }
   currentFilteredHandler(newList){
+    this.setState({filterActive : !this.state.filterActive})
     this.setState({filteredProducts : newList})
+    console.log(newList)
   }
 
   render(props){
+    let arrayToIterate = this.state.filterActive ? this.state.filteredProducts : this.state.productList 
     return(
 
       <>
@@ -213,7 +217,7 @@ class App extends Component{
               <div className="App d-flex row my-4 justify-content-around " >
                 
                 {
-                  this.state.productList.map( product => {
+                    arrayToIterate.map( product => {
                     let {id, name, category, price, image} = product
                       return(
                         
@@ -237,7 +241,6 @@ class App extends Component{
               <Shopping
                 productsList = {this.state.shoppinCartProducts}
                 currentCartListEdited = {this.currentCartList}
-                //returPage = {this.toggleCartSectionHandler} 
               />
             ): (
               <CreateProduct
