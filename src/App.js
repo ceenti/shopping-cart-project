@@ -139,8 +139,10 @@ class App extends Component{
   }
 
   saveNewProductHandler(newProduct){
+    console.log(newProduct)
     newProduct['price'] = parseInt(newProduct['price'])
     this.setState({ productList : [...this.state.productList, {...newProduct} ] })
+    this.toogleHomeSection()
   }
 
   addProductToCartHandler(newCart){
@@ -176,7 +178,6 @@ class App extends Component{
       <>
         
         <div className="d-flex justify-content-between align-items-center container-fluid  rounded shadow" style={{position:'fixed', zIndex:'1', backgroundColor:'#EFEFEF'}}>
-          
           <nav className="d-flex flex-row align-items-center justify-content-between container-fluid">
               {/* <div className="col-1"><img style={{width:'60px', margin:'5px'}} src={logo}/></div> */}
               <div className=" ">
@@ -245,7 +246,7 @@ class App extends Component{
             ): (
               <CreateProduct
               saveProduct = {this.saveNewProductHandler}
-              returPage = {this.toogleHomeSection}
+              // returPage = {this.toogleHomeSection}
             /> 
             )
           )

@@ -61,7 +61,7 @@ class Filtro extends Component{
         return(
             <>
                
-                <FormGroup row className="my-4">
+                <FormGroup row className="my-2">
                     {/* <Label style={{textAlign:'center'}} for="exampleSelect"><h4 color="success">Filtro</h4></Label> */}
                     <Button outline className="btn-md mx-1 p-2"  color="primary" name="category" value="" onClick={this.onClickTypeOfFilter}>Categoría</Button>{' '}
                     <Button outline className="btn-md mx-1 p-2" color="success" name="price" value="" onClick={this.onClickTypeOfFilter}>Precio</Button>{' '}

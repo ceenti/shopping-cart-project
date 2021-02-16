@@ -15,7 +15,7 @@ class RangePrices extends React.Component {
     this.props.choice()
   }
   render() {
-    let STEP = 5;
+    let STEP = 10;
     let MIN = this.props.minorPrice ? this.props.minorPrice : 0 ;
     let MAX = this.props.mayorPrice ? this.props.mayorPrice : 10 ;
    console.log(this.props.productsList.length)
@@ -25,7 +25,7 @@ class RangePrices extends React.Component {
           display: "flex",
           justifyContent: "center",
           flexWrap: "wrap",
-          margin: "2em"
+          margin: "20px"
         }}
       >
         <Range

@@ -70,7 +70,7 @@ class Shopping extends Component{
     render(){
         return(
             <>
-            <div className="Shopping" style={{marginTop:'6em'}}>
+            <div className="Shopping" style={{marginTop:'150px'}}>
                 {this.state.alert ? <Alert color="warning"> Se removió el producto del carrito</Alert> : null }
                 {this.state.deletedAlert ? <Alert color="primary"> El carrito está vacío, puedes añadir más ;)</Alert> : null}
                 <h1 className="">CARRITO DE COMPRAS <Icon  style={{fontSize:'40'}} icon={shoppingCart}  /></h1>

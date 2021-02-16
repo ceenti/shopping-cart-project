@@ -12,13 +12,14 @@ class CreateProduct extends Component{
     }
 
     onChangeHandler(event){
-       
+       // REVISAR LA ASIGNACION DEL ID
         let property = event.target.name
         let value = event.target.value
 
         this.setState({newProduct : {...this.state.newProduct , [property] : value}})
         if(!this.state.newProduct['id']){
             let newId= toString(Math.round(Math.random() * (10000 - 10) + 1))
+            console.log(newId)
             this.setState({newProduct : {...this.state.newProduct, ['id']:newId, [property] : value} }) 
         } else {
             this.setState({newProduct : {...this.state.newProduct, [property] : value} }) 
@@ -57,8 +58,7 @@ class CreateProduct extends Component{
             </FormGroup>
             <Button className="btn-success" onClick= {
                 () => {
-                    this.props.saveProduct(this.state.newProduct)
-                    this.props.returPage()
+                  return  this.props.saveProduct(this.state.newProduct)
                 }
             } >Guardar el producto</Button>
         </Form>
