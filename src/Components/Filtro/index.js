@@ -15,7 +15,8 @@ class Filtro extends Component{
             filterByCategory: false,
             filterByPrice: false,
             minorPrice:0,
-            mayorPrice:1000
+            mayorPrice:1000,
+            flag:false
 
         }
         this.onClickTypeOfFilter = this.onClickTypeOfFilter.bind(this)
@@ -26,10 +27,12 @@ class Filtro extends Component{
     onChangeHandlerSelection(event){
         let value = event.target.value
         let name = event.target.name
-        let result = this.props.productList.filter( (product) => {
-           return value === "" ? product[name] !== "" : product[name] === value
+        let result = this.props.productList.filter( product => {
+           return value !== "" && product[name] === value
         })
-        this.props.newFilteredList(result)
+        let filterActive = value !== ""
+        console.log(filterActive)
+        this.props.newFilteredList(result, filterActive)
     }
 
     onClickTypeOfFilter(event){
@@ -52,7 +55,7 @@ class Filtro extends Component{
     getChoiceHandler(choice){
         parseInt(choice)
         let optionsFiltered = this.props.productList.filter( product => product.price < choice)
-        this.props.newFilteredList(optionsFiltered)
+        this.props.newFilteredList(optionsFiltered,true)
         console.log(optionsFiltered)
     }
 
@@ -63,8 +66,8 @@ class Filtro extends Component{
                
                 <FormGroup row className="my-2">
                     {/* <Label style={{textAlign:'center'}} for="exampleSelect"><h4 color="success">Filtro</h4></Label> */}
-                    <Button outline className="btn-md mx-1 p-2"  color="primary" name="category" value="" onClick={this.onClickTypeOfFilter}>Categoría</Button>{' '}
-                    <Button outline className="btn-md mx-1 p-2" color="success" name="price" value="" onClick={this.onClickTypeOfFilter}>Precio</Button>{' '}
+                    <Button disabled outline className="btn-md mx-1 p-2"  color="primary" value="" onClick={this.onClickTypeOfFilter}>Categoría</Button>{' '}
+                    <Button disabled outline className="btn-md mx-1 p-2" color="success" name="price" value="" onClick={this.onClickTypeOfFilter}>Precio</Button>{' '}
 
                     <Col>
                         <Input type="select" className="btn-md p-1" name="category" id="exampleSelect" onChange= {this.onChangeHandlerSelection}>
@@ -74,7 +77,7 @@ class Filtro extends Component{
                             <option value="res">Res</option>
                         </Input>
                     </Col>
-                    <Button className="btn-md mx-1 p-2 text-white" color="primary" name="price" value="" >Filtrar</Button>{' '}
+                    {/* <Button className="btn-md mx-1 p-2 text-white" color="primary" name="price" value="" >Filtrar</Button>{' '} */}
                 </FormGroup>
                 <RangePrices
                     minorPrice = {this.state.minorPrice}

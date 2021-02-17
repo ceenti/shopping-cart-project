@@ -165,14 +165,14 @@ class App extends Component{
   currentCartList(newListArray){
     this.setState({shoppinCartProducts: newListArray})
   }
-  currentFilteredHandler(newList){
-    this.setState({filterActive : !this.state.filterActive})
-    this.setState({filteredProducts : newList})
-    console.log(newList)
+  currentFilteredHandler(newList, filterActivated){
+    this.setState({filteredProducts : newList, filterActive : filterActivated})
   }
 
+
   render(props){
-    let arrayToIterate = this.state.filterActive ? this.state.filteredProducts : this.state.productList 
+
+    let arrayToIterate =  this.state.filterActive ? this.state.filteredProducts : this.state.productList
     return(
 
       <>

@@ -99,6 +99,4 @@ class RangePrices extends React.Component {
     );
   }
 }
-export default RangePrices
-// const rootElement = document.getElementById("root");
-// ReactDOM.render(<RangePrices />, rootElement);
+export default RangePrices;
