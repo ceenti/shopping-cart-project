@@ -66,8 +66,8 @@ class Filtro extends Component{
                
                 <FormGroup row className="my-2">
                     {/* <Label style={{textAlign:'center'}} for="exampleSelect"><h4 color="success">Filtro</h4></Label> */}
-                    <Button disabled outline className="btn-md mx-1 p-2"  color="primary" value="" onClick={this.onClickTypeOfFilter}>Categoría</Button>{' '}
-                    <Button disabled outline className="btn-md mx-1 p-2" color="success" name="price" value="" onClick={this.onClickTypeOfFilter}>Precio</Button>{' '}
+                    {/* <Button disabled outline className="btn-md mx-1 p-2"  color="primary" value="" onClick={this.onClickTypeOfFilter}>Filtro</Button>{' '} */}
+                    <Button disabled outline className="btn-md mx-1 p-2" color="success" name="price" value="" onClick={this.onClickTypeOfFilter}>Elige el tipo de filtrado</Button>{' '}
 
                     <Col>
                         <Input type="select" className="btn-md p-1" name="category" id="exampleSelect" onChange= {this.onChangeHandlerSelection}>
